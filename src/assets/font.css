@@ -1,0 +1,458 @@
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Text Light";
+  font-style: normal;
+  font-weight: 300;
+  src: url("./fonts/G4CvqQXT71s.woff2") format("woff2"),
+    url("./fonts/3nJF2AW_2KI.woff") format("woff"),
+    url("./fonts/lOCZ6cH-l95.eot") format("embedded-opentype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Text Light Swap";
+  font-style: normal;
+  font-weight: 300;
+  src: url("./fonts/G4CvqQXT71s.woff2") format("woff2"),
+    url("./fonts/3nJF2AW_2KI.woff") format("woff"),
+    url("./fonts/lOCZ6cH-l95.eot") format("embedded-opentype");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Text Normal";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./fonts/6YirsaXqsap.woff2") format("woff2"),
+    url("./fonts/A8MP726Y7RW.woff") format("woff"),
+    url("./fonts/nqnBBWt1cQ8.eot") format("embedded-opentype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Text Normal Swap";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./fonts/6YirsaXqsap.woff2") format("woff2"),
+    url("./fonts/A8MP726Y7RW.woff") format("woff"),
+    url("./fonts/nqnBBWt1cQ8.eot") format("embedded-opentype");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Text Medium";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/ndhgOwkNmDs.woff2") format("woff2"),
+    url("./fonts/g6ncoEztC_N.woff") format("woff"),
+    url("./fonts/phfAjnBQdX6.eot") format("embedded-opentype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Text Medium Swap";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/ndhgOwkNmDs.woff2") format("woff2"),
+    url("./fonts/g6ncoEztC_N.woff") format("woff"),
+    url("./fonts/phfAjnBQdX6.eot") format("embedded-opentype");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Text Bold";
+  font-style: normal;
+  font-weight: bold;
+  src: url("./fonts/WF8VhTuShVE.woff2") format("woff2"),
+    url("./fonts/Oe0HWHR8zW7.woff") format("woff"),
+    url("./fonts/GWRXKV3XeMW.eot") format("embedded-opentype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Text Bold Swap";
+  font-style: normal;
+  font-weight: bold;
+  src: url("./fonts/WF8VhTuShVE.woff2") format("woff2"),
+    url("./fonts/Oe0HWHR8zW7.woff") format("woff"),
+    url("./fonts/GWRXKV3XeMW.eot") format("embedded-opentype");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Text Bold";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/WF8VhTuShVE.woff2") format("woff2"),
+    url("./fonts/Oe0HWHR8zW7.woff") format("woff"),
+    url("./fonts/GWRXKV3XeMW.eot") format("embedded-opentype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Text Bold Swap";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/WF8VhTuShVE.woff2") format("woff2"),
+    url("./fonts/Oe0HWHR8zW7.woff") format("woff"),
+    url("./fonts/GWRXKV3XeMW.eot") format("embedded-opentype");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Text ExtraBold";
+  font-style: normal;
+  font-weight: 800;
+  src: url("./fonts/_IxD8PqgShI.woff2") format("woff2"),
+    url("./fonts/XSfIGfuYAms.woff") format("woff"),
+    url("./fonts/GWRXKV3XeMW.eot") format("embedded-opentype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Text ExtraBold Swap";
+  font-style: normal;
+  font-weight: 800;
+  src: url("./fonts/_IxD8PqgShI.woff2") format("woff2"),
+    url("./fonts/XSfIGfuYAms.woff") format("woff"),
+    url("./fonts/GWRXKV3XeMW.eot") format("embedded-opentype");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Text Viet Light";
+  font-style: normal;
+  font-weight: 300;
+  src: url("./fonts/KjRMIwI5MLI.woff2") format("woff2"),
+    url("./fonts/2kK0RUn3aHt.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Text Viet Light Swap";
+  font-style: normal;
+  font-weight: 300;
+  src: url("./fonts/KjRMIwI5MLI.woff2") format("woff2"),
+    url("./fonts/2kK0RUn3aHt.woff") format("woff");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Text Viet Normal";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./fonts/577bYCjitsm.woff2") format("woff2"),
+    url("./fonts/IOMVSiO_79n.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Text Viet Normal Swap";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./fonts/577bYCjitsm.woff2") format("woff2"),
+    url("./fonts/IOMVSiO_79n.woff") format("woff");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Text Viet Bold";
+  font-style: normal;
+  font-weight: bold;
+  src: url("./fonts/6sGd9jAF7-G.woff2") format("woff2"),
+    url("./fonts/tfxfr82lQhK.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Text Viet Bold Swap";
+  font-style: normal;
+  font-weight: bold;
+  src: url("./fonts/6sGd9jAF7-G.woff2") format("woff2"),
+    url("./fonts/tfxfr82lQhK.woff") format("woff");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Text Arbc Light";
+  font-style: normal;
+  font-weight: 300;
+  src: url("./fonts/1lvRwR8FCtJ.woff2") format("woff2"),
+    url("./fonts/ffP85_okaMb.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Text Arbc Light Swap";
+  font-style: normal;
+  font-weight: 300;
+  src: url("./fonts/1lvRwR8FCtJ.woff2") format("woff2"),
+    url("./fonts/ffP85_okaMb.woff") format("woff");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Text Arbc Normal";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./fonts/KandUw__L2Y.woff2") format("woff2"),
+    url("./fonts/eMwOw8vF5hG.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Text Arbc Normal Swap";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./fonts/KandUw__L2Y.woff2") format("woff2"),
+    url("./fonts/eMwOw8vF5hG.woff") format("woff");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Text Arbc Bold";
+  font-style: normal;
+  font-weight: bold;
+  src: url("./fonts/Y5UW-giPmlu.woff2") format("woff2"),
+    url("./fonts/t1juam039_W.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Text Arbc Bold Swap";
+  font-style: normal;
+  font-weight: bold;
+  src: url("./fonts/Y5UW-giPmlu.woff2") format("woff2"),
+    url("./fonts/t1juam039_W.woff") format("woff");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Display Light";
+  font-style: normal;
+  font-weight: 300;
+  src: url("./fonts/7IYPg3-s_Dn.woff2") format("woff2"),
+    url("./fonts/ynHedIfBxVA.woff") format("woff"),
+    url(/rsrc.php/yO/r/OycnySttP-y.eot) format("embedded-opentype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Display Light Swap";
+  font-style: normal;
+  font-weight: 300;
+  src: url("./fonts/7IYPg3-s_Dn.woff2") format("woff2"),
+    url("./fonts/ynHedIfBxVA.woff") format("woff"),
+    url(/rsrc.php/yO/r/OycnySttP-y.eot) format("embedded-opentype");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Display Medium";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/jfwoHaS3i0K.woff2") format("woff2"),
+    url("./fonts/fTvKFwGz9bf.woff") format("woff"),
+    url(/rsrc.php/yV/r/J1XKtFquvMN.eot) format("embedded-opentype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Display Medium Swap";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/jfwoHaS3i0K.woff2") format("woff2"),
+    url("./fonts/fTvKFwGz9bf.woff") format("woff"),
+    url(/rsrc.php/yV/r/J1XKtFquvMN.eot) format("embedded-opentype");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Display Semibold";
+  font-style: normal;
+  font-weight: 600;
+  src: url("./fonts/n0aIRIy9q6Y.woff2") format("woff2"),
+    url("./fonts/ZdS7UjU8lD8.woff") format("woff"),
+    url(/rsrc.php/ye/r/EvBN2KAyST_.eot) format("embedded-opentype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Display Semibold Swap";
+  font-style: normal;
+  font-weight: 600;
+  src: url("./fonts/n0aIRIy9q6Y.woff2") format("woff2"),
+    url("./fonts/ZdS7UjU8lD8.woff") format("woff"),
+    url(/rsrc.php/ye/r/EvBN2KAyST_.eot) format("embedded-opentype");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Display Bold";
+  font-style: normal;
+  font-weight: bold;
+  src: url("./fonts/WXBYOaYZuYu.woff2") format("woff2"),
+    url("./fonts/uFQSckMfvjy.woff") format("woff"),
+    url(/rsrc.php/ye/r/EvBN2KAyST_.eot) format("embedded-opentype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Display Bold Swap";
+  font-style: normal;
+  font-weight: bold;
+  src: url("./fonts/WXBYOaYZuYu.woff2") format("woff2"),
+    url("./fonts/uFQSckMfvjy.woff") format("woff"),
+    url(/rsrc.php/ye/r/EvBN2KAyST_.eot) format("embedded-opentype");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Display Viet Light";
+  font-style: normal;
+  font-weight: 300;
+  src: url("./fonts/NgfGZAAbez9.woff2") format("woff2"),
+    url("./fonts/3YmGGif4vvR.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Display Viet Light Swap";
+  font-style: normal;
+  font-weight: 300;
+  src: url("./fonts/NgfGZAAbez9.woff2") format("woff2"),
+    url("./fonts/3YmGGif4vvR.woff") format("woff");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Display Viet Medium";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/4ozoJwSmcc3.woff2") format("woff2"),
+    url("./fonts/p0nh2W-T3pK.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Display Viet Medium Swap";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/4ozoJwSmcc3.woff2") format("woff2"),
+    url("./fonts/p0nh2W-T3pK.woff") format("woff");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Display Viet Bold";
+  font-style: normal;
+  font-weight: bold;
+  src: url("./fonts/CrNHpFjZLUv.woff2") format("woff2"),
+    url("./fonts/OD1QRDKakZh.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Display Viet Bold Swap";
+  font-style: normal;
+  font-weight: bold;
+  src: url("./fonts/CrNHpFjZLUv.woff2") format("woff2"),
+    url("./fonts/OD1QRDKakZh.woff") format("woff");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Display Arbc Light";
+  font-style: normal;
+  font-weight: 300;
+  src: url("./fonts/ACM78BvaEDZ.woff2") format("woff2"),
+    url("./fonts/2h3mC7tJYzQ.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Display Arbc Light Swap";
+  font-style: normal;
+  font-weight: 300;
+  src: url("./fonts/ACM78BvaEDZ.woff2") format("woff2"),
+    url("./fonts/2h3mC7tJYzQ.woff") format("woff");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Display Arbc Medium";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/icTeuzc84q0.woff2") format("woff2"),
+    url("./fonts/WoLIyErNLpI.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Display Arbc Medium Swap";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/icTeuzc84q0.woff2") format("woff2"),
+    url("./fonts/WoLIyErNLpI.woff") format("woff");
+}
+
+@font-face {
+  font-display: block;
+  font-family: "Optimistic Display Arbc Bold";
+  font-style: normal;
+  font-weight: bold;
+  src: url("./fonts/SRqN16ICttb.woff2") format("woff2"),
+    url("./fonts/k-7CnE15sOg.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Optimistic Display Arbc Bold Swap";
+  font-style: normal;
+  font-weight: bold;
+  src: url("./fonts/SRqN16ICttb.woff2") format("woff2"),
+    url("./fonts/k-7CnE15sOg.woff") format("woff");
+}
+
+@supports (font-variation-settings: normal) {
+  @font-face {
+    font-family: "Optimistic 95";
+    src: url("./fonts/-pkMfchyeAZ.woff2") format("woff2-variations");
+    font-weight: 300 800;
+    font-stretch: 80% 95%;
+  }
+}
+
+@supports not (font-variation-settings: normal) {
+  @font-face {
+    font-family: "Optimistic 95";
+    font-style: normal;
+    font-weight: normal;
+    font-stretch: 95%;
+    src: url("./fonts/YC5jVdk8D9S.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Optimistic 95";
+    font-style: normal;
+    font-weight: 500;
+    font-stretch: 95%;
+    src: url("./fonts/5MnfjJMjLzs.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Optimistic 95";
+    font-style: normal;
+    font-weight: 600;
+    font-stretch: 95%;
+    src: url("./fonts/nMH2KEsPrFd.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Optimistic 95";
+    font-style: normal;
+    font-weight: 700;
+    font-stretch: 95%;
+    src: url("./fonts/HdqPnvQ5eKw.woff2") format("woff2");
+  }
+}
