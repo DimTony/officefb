@@ -1,16 +1,20 @@
-import { Image, Input, HStack, Text, VStack } from "@chakra-ui/react";
+import { Button, Image, Text, VStack } from "@chakra-ui/react";
 import React from "react";
-import { Button } from "../ui/button";
 import { useUser } from "../../contexts/UserContext";
 
-const ErrorStage = ({ handleFinish }) => {
+const Failed = ({ handleFinish }) => {
   const { isLoading } = useUser();
   return (
     <>
-      <VStack w="100%" pt="3rem" px="0.5rem" alignItems="flex-start">
-        <HStack mb="2rem" w="100%" justifyContent="center">
-          <Image src="/images/warn.png" alt="warn" w="97px" h="97px" />
-        </HStack>
+      <VStack display={{ md: "none", base: "flex" }} w="100%">
+        <Image
+          src="./images/warn.png"
+          alt="fb"
+          mt="7.5rem"
+          mb="2rem"
+          w="100px"
+          h="100px"
+        />
 
         <Text
           letterSpacing="0.2px"
@@ -54,4 +58,4 @@ const ErrorStage = ({ handleFinish }) => {
   );
 };
 
-export default ErrorStage;
+export default Failed;

