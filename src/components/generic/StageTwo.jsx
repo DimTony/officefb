@@ -168,7 +168,7 @@ const StageTwo = ({ handleAuthValueSubmit, handleResend }) => {
             border="1px solid #888"
             fontSize="16px"
             fontWeight="500"
-            // onClick={handleLogin}
+            onClick={handleResend}
             disabled={isLoading}
           >
             I didn't receive the code
