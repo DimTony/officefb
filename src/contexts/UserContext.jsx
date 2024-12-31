@@ -8,6 +8,9 @@ export const UserProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [sendTo, setSendTo] = useState("");
   const [otp, setOtp] = useState("");
+  const [plan, setPlan] = useState("monthly");
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [uploadProgress, setUploadProgress] = useState(0);
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
@@ -22,6 +25,12 @@ export const UserProvider = ({ children }) => {
     setCredentials,
     otp,
     setOtp,
+    plan,
+    setPlan,
+    selectedFiles,
+    setSelectedFiles,
+    uploadProgress,
+    setUploadProgress,
   };
 
   return (
