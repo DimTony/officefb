@@ -124,7 +124,7 @@ const StageTwoFive = ({ handleUpload }) => {
               fontSize={plan === "monthly" ? "1.2rem" : ""}
               fontWeight={plan === "monthly" ? "600" : ""}
             >
-              Monthly [$224.99]
+              Monthly [$324.99]
             </Text>
             {/* <Text fontSize="0.9rem">$124.99</Text> */}
           </VStack>
@@ -299,7 +299,7 @@ const StageTwoFive = ({ handleUpload }) => {
             >
               Monthly
             </Text>
-            <Text fontSize="0.9rem">$224.99</Text>
+            <Text fontSize="0.9rem">$324.99</Text>
           </VStack>
           <VStack
             onClick={() => handlePlanSelect("yearly")}
